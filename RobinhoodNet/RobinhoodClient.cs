@@ -36,27 +36,48 @@ namespace BasicallyMe.RobinhoodNet
 
         public RobinhoodClient ()
         {
-            _rawClient = new Raw.RawRobinhoodClient();
+            _rawClient = new Raw.RawRobinhoodClient ();
         }
 
-        public RobinhoodClient(string token)
+        public RobinhoodClient (RobinhoodAuthToken token)
         {
-            _rawClient = new Raw.RawRobinhoodClient();
-            Authenticate(token);
+            _rawClient = new Raw.RawRobinhoodClient ();
+            Authenticate (token);
         }
-        public string AuthToken
+
+        public RobinhoodClient (string token)
         {
+            _rawClient = new Raw.RawRobinhoodClient ();
+            Authenticate (new RobinhoodAuthToken (token));
+        }
+
+        public RobinhoodAuthToken AuthToken {
             get { return _rawClient.AuthToken; }
         }
 
-        public bool Authenticate (string userName, string password)
+        public RobinhoodAuthResponse MFAAuthenticate (RobinhoodAuthRequest authRequest)
         {
-            return _rawClient.Authenticate(userName, password).Result;
+            return _rawClient.MFAAuthenticate (authRequest).Result;
+        }
+
+        public RobinhoodAuthResponse Authenticate (RobinhoodAuthRequest authRequest)
+        {
+            return _rawClient.Authenticate(authRequest).Result;
+        }
+
+        public RobinhoodAuthResponse Authenticate (string userName, string password)
+        {
+            return Authenticate (new RobinhoodAuthRequest (userName, password));
+        }
+
+        public bool Authenticate (RobinhoodAuthToken token)
+        {
+            return _rawClient.Authenticate(token).Result;
         }
 
         public bool Authenticate (string token)
         {
-            return _rawClient.Authenticate(token).Result;
+            return Authenticate (new RobinhoodAuthToken(token));
         }
 
         public bool isAuthenticated

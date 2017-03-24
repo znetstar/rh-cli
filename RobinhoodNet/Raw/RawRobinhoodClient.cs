@@ -18,6 +18,7 @@ namespace BasicallyMe.RobinhoodNet.Raw
         static readonly string MULTIFACTOR_AUTH_URL = "https://api.robinhood.com/mfa/";
         static readonly string PASSWORD_RESET_URL = "https://api.robinhood.com/password_reset/request/";
         static readonly string PASSWORD_CHANGE_URL = "https://api.robinhood.com/password_change/";
+        static readonly string OAUTH_TOKEN_URL = "https://api.robinhood.com/oauth2/token/";
 
         // User Info
         static readonly string INVESTMENT_PROFILE_URL = "https://api.robinhood.com/user/investment_profile/";
@@ -66,9 +67,10 @@ namespace BasicallyMe.RobinhoodNet.Raw
         // Settings
         static readonly string SETTINGS_NOTIFICATIONS_URL = "https://api.robinhood.com/settings/notifications/";
 
+
         public RawRobinhoodClient ()
         {
-            var handler = new HttpClientHandler();
+            var handler = new HttpClientHandler ();
             if (handler.SupportsAutomaticDecompression)
             {
                 handler.AutomaticDecompression = DecompressionMethods.GZip |
@@ -84,6 +86,7 @@ namespace BasicallyMe.RobinhoodNet.Raw
             _httpClient.DefaultRequestHeaders.Add("X-Robinhood-API-Version", "1.103.0");
             _httpClient.DefaultRequestHeaders.Add("Connection", "keep-alive");
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "Robinhood/823 (iPhone; iOS 7.1.2; Scale/2.00)");
+           
         }
 
 
@@ -99,6 +102,7 @@ namespace BasicallyMe.RobinhoodNet.Raw
             JObject result = JObject.Parse(content);
             return result;
         }
+
 
         Task<HttpResponseMessage>
         doPost_NativeResponse (Uri uri, IEnumerable<KeyValuePair<string, string>> pairs = null)

@@ -73,6 +73,9 @@
     <Compile Include="UserIdInfo.cs" />
     <Compile Include="UserInvestmentProfile.cs" />
     <Compile Include="Watchlist.cs" />
+    <Compile Include="RobinhoodAuthResponse.cs" />
+    <Compile Include="RobinhoodAuthRequest.cs" />
+    <Compile Include="RobinhoodAuthToken.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -81,10 +84,6 @@
     <None Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Extensions.dll</HintPath>
       <Private>True</Private>
@@ -93,13 +92,16 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
         <Policies>
-          <TextStylePolicy FileWidth="120" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/plain" />
-          <CSharpFormattingPolicy IndentBlocksInsideExpressions="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="DoNotCare" ArrayInitializerWrapping="DoNotChange" ArrayInitializerBraceStyle="NextLine" BeforeMethodCallParentheses="False" NewLineBeforeConstructorInitializerColon="NewLine" NewLineAfterConstructorInitializerColon="SameLine" NewParentheses="False" SpacesBeforeBrackets="False" SpacesBeforeArrayDeclarationBrackets="True" MethodCallArgumentWrapping="WrapIfTooLong" NewLineAferMethodCallOpenParentheses="NewLine" AlignToFirstMethodCallArgument="True" MethodDeclarationParameterWrapping="WrapIfTooLong" NewLineAferMethodDeclarationOpenParentheses="NewLine" MethodDeclarationClosingParenthesesOnNewLine="NewLine" AlignToFirstMethodDeclarationParameter="False" IndexerDeclarationParameterWrapping="WrapIfTooLong" NewLineAferIndexerDeclarationOpenBracket="NewLine" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+          <TextStylePolicy TabWidth="4" TabsToSpaces="True" IndentWidth="4" RemoveTrailingWhitespace="True" NoTabsAfterNonTabs="False" EolMarker="Native" FileWidth="120" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/plain" />
+          <CSharpFormattingPolicy IndentBlock="True" IndentBraces="False" IndentSwitchSection="False" IndentSwitchCaseSection="True" LabelPositioning="OneLess" NewLinesForBracesInTypes="True" NewLinesForBracesInMethods="True" NewLinesForBracesInProperties="False" NewLinesForBracesInAccessors="False" NewLinesForBracesInAnonymousMethods="False" NewLinesForBracesInControlBlocks="False" NewLinesForBracesInAnonymousTypes="False" NewLinesForBracesInObjectCollectionArrayInitializers="False" NewLinesForBracesInLambdaExpressionBody="False" NewLineForElse="False" NewLineForCatch="False" NewLineForFinally="False" NewLineForMembersInObjectInit="False" NewLineForMembersInAnonymousTypes="False" NewLineForClausesInQuery="False" SpacingAfterMethodDeclarationName="True" SpaceWithinMethodDeclarationParenthesis="False" SpaceBetweenEmptyMethodDeclarationParentheses="False" SpaceAfterMethodCallName="True" SpaceWithinMethodCallParentheses="False" SpaceBetweenEmptyMethodCallParentheses="False" SpaceAfterControlFlowStatementKeyword="True" SpaceWithinExpressionParentheses="False" SpaceWithinCastParentheses="False" SpaceWithinOtherParentheses="False" SpaceAfterCast="False" SpacesIgnoreAroundVariableDeclaration="False" SpaceBeforeOpenSquareBracket="True" SpaceBetweenEmptySquareBrackets="False" SpaceWithinSquareBrackets="False" SpaceAfterColonInBaseTypeDeclaration="True" SpaceAfterComma="True" SpaceAfterDot="False" SpaceAfterSemicolonsInForStatement="True" SpaceBeforeColonInBaseTypeDeclaration="True" SpaceBeforeComma="False" SpaceBeforeDot="False" SpaceBeforeSemicolonsInForStatement="False" SpacingAroundBinaryOperator="Single" WrappingPreserveSingleLine="True" WrappingKeepStatementsOnSingleLine="True" PlaceSystemDirectiveFirst="True" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
           <TextStylePolicy inheritsSet="null" scope="text/x-csharp" />
           <TextStylePolicy inheritsSet="null" scope="text/x-fsharp" />
           <FSharpFormattingPolicy scope="text/x-fsharp">
