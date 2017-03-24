@@ -1,6 +1,6 @@
 # rh-cli
 
-**rh-cli** is a simple Windows command line interface for trading stocks on Robinhood. It utilizes a more comprehensive version of [RobinhoodNet](https://github.com/itsff/RobinhoodNet).
+**rh-cli** is a simple .NET/Mono command line interface for trading stocks on Robinhood. It utilizes a more comprehensive version of [RobinhoodNet](https://github.com/itsff/RobinhoodNet).
 
 Neither this project nor the creator is affiliated with Robinhood Financial LLC.
 
